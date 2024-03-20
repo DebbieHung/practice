@@ -12,8 +12,8 @@ def get_sports():
 
 def get_sixFood():
     url = "https://www.hpa.gov.tw/Pages/List.aspx?nodeid=4086"
-    chrome = get_chrome(url)
-    soup = BeautifulSoup(chrome.page_source, "lxml")
+    chrome = get_chrome(url, hide=True)
+    soup = BeautifulSoup(chrome.page_source, "html.parser")
     allText = soup.find("div", class_="htmlBlock").text.split("\n\n\n\n\n\xa0")
     for i in range(len(allText)):
         allText[i] = allText[i].replace(" ", "").replace("\xa0", "")
@@ -25,3 +25,7 @@ def get_sixFood():
         desc.append(allText[i].replace("\n", "").replace(kind[i], ""))
 
     return kind, desc
+
+
+if __name__ == "__main__":
+    print(get_sixFood())
