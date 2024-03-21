@@ -58,6 +58,13 @@ def sixFood_data():
     return result
 
 
+@app.route("/sixFoodText")
+def get_sixFoodText():
+    kind, desc = get_sixFood()
+    result = json.dumps(desc, ensure_ascii=False)
+    return result
+
+
 @app.route("/")
 def index():
     return "Hello Flask"
