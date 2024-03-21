@@ -42,18 +42,34 @@ def get_bmi(height, weight):
 def sixFood_data():
     kind, desc = get_sixFood()
     dict = {}
+    dictall = {}
     data = []
     for i in range(len(kind)):
         for j in range(len(kind)):
             if j == 5:
                 dict["value"] = 0.167
                 dict["name"] = kind[5]
+                dictall["chart"] = dict
+                dictall["info"] = desc[5]
             else:
                 dict["value"] = 0.167
                 dict["name"] = kind[i - 1]
+                dictall["chart"] = dict
+                dictall["info"] = desc[i - 1]
                 dict = {}
-        data.append(dict)
-    result = json.dumps(data, ensure_ascii=False)
+                dictall = {}
+
+        data.append(dictall)
+    chart = [data[i]["chart"] for i in range(len(data))]
+    info = [data[i]["info"] for i in range(len(data))]
+
+    result = json.dumps(
+        {
+            "chart": chart,
+            "info": info,
+        },
+        ensure_ascii=False,
+    )
 
     return result
 

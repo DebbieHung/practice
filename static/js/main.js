@@ -12,7 +12,7 @@ function draw_sixFood() {
             type: "GET",
             dataType: "json",
             success: (result) => {
-                drawchart(chart1, "六大類食物", result)
+                drawchart(chart1, "六大類食物", result['chart'])
                 chart1.hideLoading();
             }
         }
