@@ -86,7 +86,7 @@ function showText(text, chart) {
                             borderColor: '#d2691e',
                             borderWidth: 2,
                             borderRadius: 5,
-                            padding: 10,
+                            padding: 5,
                             color: '#000',
                             fontSize: 16,
                             shadowBlur: 3,
