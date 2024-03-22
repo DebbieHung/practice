@@ -12,14 +12,14 @@ function draw_sixFood() {
             type: "GET",
             dataType: "json",
             success: (result) => {
-                drawchart(chart1, "六大類食物", result['chart'])
+                drawchart(chart1, "六大類食物", result['chart'], result['info'])
                 chart1.hideLoading();
             }
         }
     )
 }
 
-function drawchart(chart, name, data) {
+function drawchart(chart, name, data, text) {
     let option = {
         tooltip: {
             trigger: 'item'
@@ -58,8 +58,14 @@ function drawchart(chart, name, data) {
     };
 
     option && chart.setOption(option);
-    chart.on('click', function () {
-        showText("test", chart2)
+    chart.on('click', function (params) {
+        for (i = 0; i < 6; i++) {
+            if (params.name == data[i]['name']) {
+                showText(text[i], chart2)
+                console.log(text[i]);
+            }
+        }
+
     })
 }
 
