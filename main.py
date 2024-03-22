@@ -61,7 +61,7 @@ def sixFood_data():
 
         data.append(dictall)
     chart = [data[i]["chart"] for i in range(len(data))]
-    info = [data[i]["info"] for i in range(len(data))]
+    info = [data[i]["info"].split("，") for i in range(len(data))]
 
     result = json.dumps(
         {

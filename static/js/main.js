@@ -79,27 +79,26 @@ function showText(text, chart) {
                     {
                         value: [0, 0],
                         label: {
+                            distance: 5,
                             show: true,
-                            formatter: [
-                                text
-                            ].join('\n'),
-                            backgroundColor: '#eee',
-                            borderColor: '#333',
+                            formatter: text.join('\n'),
+                            backgroundColor: "#deb887",
+                            borderColor: '#d2691e',
                             borderWidth: 2,
                             borderRadius: 5,
                             padding: 10,
                             color: '#000',
-                            fontSize: 14,
+                            fontSize: 16,
                             shadowBlur: 3,
                             shadowColor: '#888',
                             shadowOffsetX: 0,
                             shadowOffsetY: 3,
                             lineHeight: 30,
                             rich: {
-                                fontSize: 20,
+                                fontSize: 16,
                                 textBorderColor: '#000',
                                 textBorderWidth: 3,
-                                color: '#fff'
+                                color: '#fff',
                             }
                         }
                     }
