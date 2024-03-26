@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from info import get_sixFood
+from info import get_sixFood, get_sports
 import json
 
 
@@ -74,10 +74,10 @@ def sixFood_data():
     return result
 
 
-@app.route("/sixFoodText")
-def get_sixFoodText():
-    kind, desc = get_sixFood()
-    result = json.dumps(desc, ensure_ascii=False)
+@app.route("/sports")
+def sports_data():
+    values = get_sports()
+    result = json.dumps(values, ensure_ascii=False)
     return result
 
 

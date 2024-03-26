@@ -7,7 +7,29 @@ def get_sports():
     df_sports = pd.read_csv(
         "C:/Users/Debbie Hung/Desktop/Python Django Web/practice/File_14349.csv"
     )
-    return df_sports
+    df_sports = df_sports[["運動項目 ", "消耗熱量(大卡/公斤體重/小時)"]]
+    for i in range(len(df_sports)):
+        if (
+            df_sports.loc[i].values[1]
+            == df_sports["消耗熱量(大卡/公斤體重/小時)"].min()
+        ):
+            df_sports.loc[i, "score"] = 1
+        elif (
+            df_sports.loc[i].values[1]
+            < df_sports["消耗熱量(大卡/公斤體重/小時)"].mean()
+        ):
+            df_sports.loc[i, "score"] = 2
+        elif (
+            df_sports.loc[i].values[1] < df_sports["消耗熱量(大卡/公斤體重/小時)"].max()
+        ):
+            df_sports.loc[i, "score"] = 3
+        else:
+            df_sports.loc[i, "score"] = 4
+    columns = df_sports.columns.tolist()
+    values = df_sports.values.tolist()
+    values.insert(0, columns)
+
+    return values
 
 
 def get_sixFood():

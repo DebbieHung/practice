@@ -1,8 +1,26 @@
 const chart1 = echarts.init(document.getElementById('sixFood'));
 const chart2 = echarts.init(document.getElementById('sixFoodtext'));
-
+const chart3 = echarts.init(document.getElementById('sports'));
 
 draw_sixFood()
+drawSports()
+
+function drawSports() {
+    chart3.showLoading();
+    $.ajax(
+        {
+            url: "/sports",
+            type: "GET",
+            dataType: "json",
+            success: (result) => {
+                drawchart_bar(chart3, result)
+                chart3.hideLoading();
+            }
+
+        }
+    )
+
+}
 
 function draw_sixFood() {
     chart1.showLoading();
@@ -119,3 +137,38 @@ function showText(text, chart) {
     chart.setOption(option);
 }
 
+function drawchart_bar(chart, data) {
+    let option = {
+        dataset: {
+            source: data
+        },
+        grid: { containLabel: true },
+        xAxis: { name: 'amount' },
+        yAxis: { type: 'category' },
+        visualMap: {
+            orient: 'horizontal',
+            left: 'center',
+            min: 0,
+            max: 20,
+            text: ['High Score', 'Low Score'],
+            // Map the score column to color
+            dimension: 0,
+            inRange: {
+                color: ['#65B581', '#FFCE34', '#FD665F']
+            }
+        },
+        series: [
+            {
+                type: 'bar',
+                encode: {
+                    // Map the "amount" column to X axis.
+                    x: 'amount',
+                    // Map the "product" column to Y axis
+                    y: 'product'
+                }
+            }
+        ]
+    };
+    chart.setOption(option);
+
+}
