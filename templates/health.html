@@ -8,13 +8,14 @@
     <link rel="stylesheet" href="/static/css/main.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
 </head>
 
 <body>
-    <h1 id="title">健康小學堂</h1>
+    <h1 class="title is-1 has-background-danger-light has-text-centered" id="title">健康小學堂</h1>
     <section id="bmi">
         <section class="bmical">
-            <h2>BMI 計算</h2>
+            <h2 class="subtitle is-3 has-text-left">BMI 計算</h2>
 
             <div class="bmidesc">
                 <p>
@@ -32,8 +33,10 @@
                     <input placeholder="cm" type="number" step="0.1" id="height" name="height" value="{{height}}"><br>
                     <label for="weight">體重:</label>
                     <input placeholder="kg" type="number" step="0.1" id="weight" name="weight" value="{{weight}}"><br>
-                    <input type="submit" name="calc" value="計算">
-                    <input type="submit" name="clear" value="清除">
+                    <input class="button is-primary button is-small button is-rounded" type="submit" name="calc"
+                        value="計算">
+                    <input class="button is-warning button is-small button is-rounded" type="submit" name="clear"
+                        value="清除">
 
                 </form>
             </div>
@@ -48,9 +51,9 @@
 
             </div>
             <div class="resultdesc">
-                <table border="1">
+                <table class="table is-striped is-bordered" border="1">
                     <thead>
-                        <tr>
+                        <tr class="is-info">
                             <th>成人肥胖定義</th>
                             <th>身體質量指數(BMI)(kg/㎡)</th>
                             <th>腰圍(cm)</th>
@@ -89,16 +92,16 @@
         </section>
     </section>
     <section id="food">
-        <h2>六大類食物</h2>
+        <h2 class="subtitle is-3 has-text-left">六大類食物</h2>
         <p>均衡攝取6大類食物，最好再搭配適當的運動，才會讓身體更健康！</p>
         <div id="sixFood" style="width: 800px;height:600px;"></div>
-        <h3>六大類食物說明(點擊圖示查看)</h3>
+        <h3 class="subtitle is-4 has-text-left">六大類食物說明(點擊圖示查看)</h3>
         <div id="sixFoodtext" style="width: 1500px;height:600px;"></div>
 
     </section>
     <section id="workout">
-        <h2>各項運動消耗熱量參考</h2>
-        <div id="sports" style="width: 1500px;height:1000px;"></div>
+        <h2 class="subtitle is-3 has-text-left">各項運動消耗熱量參考</h2>
+        <div id="sports" style="width: 1800px;height:1000px;"></div>
     </section>
 
 

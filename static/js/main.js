@@ -5,6 +5,10 @@ const chart3 = echarts.init(document.getElementById('sports'));
 draw_sixFood()
 drawSports()
 
+$(window).resize(function () {
+    pageChart.resize();
+})
+
 function drawSports() {
     chart3.showLoading();
     $.ajax(
@@ -144,23 +148,26 @@ function drawchart_bar(chart, data, xName, yName) {
             source: data
         },
         grid: { containLabel: true },
-        xAxis: { name: 'amount' },
+        xAxis: { name: xName },
         yAxis: { type: 'category' },
         visualMap: {
             orient: 'horizontal',
             left: 'center',
-            min: 0,
-            max: 20,
+            min: 1,
+            max: 4,
             text: ['High Score', 'Low Score'],
             // Map the score column to color
-            dimension: 0,
+            dimension: 2,
             inRange: {
-                color: ['#87cefa', '#FFCE34', '#65B581']
+                color: ['#d8bfd8', '#ffc0cb', '#db7093']
             }
         },
         series: [
             {
                 type: 'bar',
+                label: {
+                    show: true
+                },
                 encode: {
                     // Map the "amount" column to X axis.
                     x: xName,
