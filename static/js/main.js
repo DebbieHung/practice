@@ -13,7 +13,8 @@ function drawSports() {
             type: "GET",
             dataType: "json",
             success: (result) => {
-                drawchart_bar(chart3, result)
+                console.log(result['val'], result["col"][1], result["col"][0]);
+                drawchart_bar(chart3, result['val'], result["col"][1], result["col"][0])
                 chart3.hideLoading();
             }
 
@@ -137,7 +138,7 @@ function showText(text, chart) {
     chart.setOption(option);
 }
 
-function drawchart_bar(chart, data) {
+function drawchart_bar(chart, data, xName, yName) {
     let option = {
         dataset: {
             source: data
@@ -154,7 +155,7 @@ function drawchart_bar(chart, data) {
             // Map the score column to color
             dimension: 0,
             inRange: {
-                color: ['#65B581', '#FFCE34', '#FD665F']
+                color: ['#87cefa', '#FFCE34', '#65B581']
             }
         },
         series: [
@@ -162,9 +163,9 @@ function drawchart_bar(chart, data) {
                 type: 'bar',
                 encode: {
                     // Map the "amount" column to X axis.
-                    x: 'amount',
+                    x: xName,
                     // Map the "product" column to Y axis
-                    y: 'product'
+                    y: yName
                 }
             }
         ]

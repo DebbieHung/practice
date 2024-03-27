@@ -76,8 +76,15 @@ def sixFood_data():
 
 @app.route("/sports")
 def sports_data():
-    values = get_sports()
-    result = json.dumps(values, ensure_ascii=False)
+    columns, values = get_sports()
+    result = json.dumps(
+        {
+            "col": columns,
+            "val": values,
+        },
+        ensure_ascii=False,
+    )
+
     return result
 
 

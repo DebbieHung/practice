@@ -29,7 +29,7 @@ def get_sports():
     values = df_sports.values.tolist()
     values.insert(0, columns)
 
-    return values
+    return columns, values
 
 
 def get_sixFood():
