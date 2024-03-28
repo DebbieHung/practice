@@ -4,6 +4,16 @@ table {
     text-align: center;
 }
 
-#sixFoodtext {
-    background-color: rgb(239, 219, 192);
+
+body {
+    background-color: #f4dfcef1;
+    overflow-y: auto;
+}
+
+.text {
+    background-color: #8CB9BD;
+}
+
+#workout {
+    background-color: blanchedalmond;
 }

@@ -12,45 +12,53 @@
 </head>
 
 <body>
-    <h1 class="title is-1 has-background-danger-light has-text-centered" id="title">健康小學堂</h1>
+    <h1 class="title is-1 has-text-centered" id="title">健康小學堂</h1>
     <section id="bmi">
         <section class="bmical">
-            <h2 class="subtitle is-3 has-text-left">BMI 計算</h2>
 
-            <div class="bmidesc">
-                <p>
+            <div class="columns is-vcentered is-gapless is-justify-content-space-evenly">
+                <div class="is-size-5">
+
                     世界衛生組織建議以身體質量指數（Body Mass Index, BMI）來衡量肥胖程度，其計算公式是以體重（公斤）除以身高（公尺）的平方。 <br>
                     國民健康署建議我國成人BMI應維持在18.5（kg/㎡）及24（kg/㎡）之間，太瘦、過重或太胖皆有礙健康。<br>
                     研究顯示，體重過重或是肥胖（BMI≧24）為糖尿病、心血管疾病、惡性腫瘤等慢性疾病的主要風險因素； <br>
-                    而過瘦的健康問題，則會有營養不良、骨質疏鬆、猝死等健康問題。
+                    而過瘦的健康問題，則會有營養不良、骨質疏鬆、猝死等健康問題。<br>
                     <a href="https://health99.hpa.gov.tw/bmi">資料來源:https://health99.hpa.gov.tw/bmi</a>
-                </p>
 
-            </div>
-            <div class="bmiform">
-                <form action="" method="POST">
-                    <label for="height">身高:</label>
-                    <input placeholder="cm" type="number" step="0.1" id="height" name="height" value="{{height}}"><br>
-                    <label for="weight">體重:</label>
-                    <input placeholder="kg" type="number" step="0.1" id="weight" name="weight" value="{{weight}}"><br>
-                    <input class="button is-primary button is-small button is-rounded" type="submit" name="calc"
-                        value="計算">
-                    <input class="button is-warning button is-small button is-rounded" type="submit" name="clear"
-                        value="清除">
 
-                </form>
+                </div>
+
             </div>
         </section>
-        <section class="bmiresult">
-            <div class="result">
-                {% if not bmi%}
-                您的BMI值:
-                {% else %}
-                您的BMI值:{{bmi}} &rarr; {{message}}
-                {% endif %}
 
-            </div>
-            <div class="resultdesc">
+
+        <div class="text">
+            <div class="columns is-vcentered is-justify-content-space-evenly m-3">
+                <h2 class="subtitle is-3 has-text-left">BMI 計算</h2>
+                <div class="is-size-5">
+                    <form action="" method="POST">
+                        <label class="label is-medium" for="height">身高:</label>
+                        <input class="input is-rounded" placeholder="cm" type="number" step="0.1" id="height"
+                            name="height" value="{{height}}"><br>
+                        <label class="label is-medium" for="weight">體重:</label>
+                        <input class="input is-rounded" placeholder="kg" type="number" step="0.1" id="weight"
+                            name="weight" value="{{weight}}"><br>
+                        <input class="button is-link button is-small button is-rounded m-3" type="submit" name="calc"
+                            value="計算">
+                        <input class="button is-warning button is-small button is-rounded m-3" type="submit"
+                            name="clear" value="清除">
+
+                    </form>
+
+
+                </div>
+                <div class="is-size-3">
+                    {% if not bmi%}
+                    您的BMI值:
+                    {% else %}
+                    您的BMI值:{{bmi}} &rarr; {{message}}
+                    {% endif %}
+                </div>
                 <table class="table is-striped is-bordered" border="1">
                     <thead>
                         <tr class="is-info">
@@ -88,20 +96,24 @@
                 </table>
 
             </div>
+        </div>
 
-        </section>
+
+
     </section>
     <section id="food">
-        <h2 class="subtitle is-3 has-text-left">六大類食物</h2>
-        <p>均衡攝取6大類食物，最好再搭配適當的運動，才會讓身體更健康！</p>
-        <div id="sixFood" style="width: 800px;height:600px;"></div>
-        <h3 class="subtitle is-4 has-text-left">六大類食物說明(點擊圖示查看)</h3>
-        <div id="sixFoodtext" style="width: 1500px;height:600px;"></div>
+        <h2 class="subtitle is-3 has-text-centered has-text-weight-bold ml-6">六大類食物</h2>
+        <p class="has-text-danger is-size-5 is-underlined has-text-weight-bold ml-6">
+            均衡攝取6大類食物，最好再搭配適當的運動，才會讓身體更健康！(點擊圖示查看說明)</p>
+        <div class="columns is-vcentered is-justify-content-space-evenly m-3">
+            <div id="sixFood" style="width: 500px;height:600px;"></div>
+            <div class="chart" id="sixFoodtext" style="width: 1800px;height:400px;"></div>
+        </div>
 
     </section>
     <section id="workout">
-        <h2 class="subtitle is-3 has-text-left">各項運動消耗熱量參考</h2>
-        <div id="sports" style="width: 1800px;height:1000px;"></div>
+        <h2 class="subtitle is-3 has-text-weight-bold has-text-centered ml-6">🚴🏽‍♀️ 各項運動消耗熱量參考 🏃 </h2>
+        <div class="ml-6" id="sports" style="width: 1800px;height:1000px;"></div>
     </section>
 
 

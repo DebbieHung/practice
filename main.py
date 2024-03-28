@@ -31,7 +31,11 @@ def health():
             bmi = "輸入有誤"
     if request.form.get("clear"):
         bmi = ""
-    return render_template("health.html", bmi=bmi, message=message)
+        height = ""
+        weight = ""
+    return render_template(
+        "health.html", bmi=bmi, message=message, height=height, weight=weight
+    )
 
 
 def get_bmi(height, weight):

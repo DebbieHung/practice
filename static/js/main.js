@@ -2,12 +2,24 @@ const chart1 = echarts.init(document.getElementById('sixFood'));
 const chart2 = echarts.init(document.getElementById('sixFoodtext'));
 const chart3 = echarts.init(document.getElementById('sports'));
 
+
+
 draw_sixFood()
 drawSports()
 
-$(window).resize(function () {
-    pageChart.resize();
-})
+// window.addEventListener('resize', () => {
+//     console.log("視窗變更");
+//     chart1.resize();
+//     chart2.resize();
+//     chart3.resize();
+// })
+
+window.onresize = function () {
+    console.log("視窗變更");
+    chart1.resize();
+    chart2.resize();
+    chart3.resize();
+};
 
 function drawSports() {
     chart3.showLoading();
@@ -42,6 +54,8 @@ function draw_sixFood() {
     )
 }
 
+
+// 畫圓餅圖
 function drawchart(chart, name, data, text) {
     let option = {
         tooltip: {
@@ -63,7 +77,8 @@ function drawchart(chart, name, data, text) {
                 },
                 label: {
                     show: false,
-                    position: 'center'
+                    position: 'center',
+                    fontSize: 20
                 },
                 emphasis: {
                     label: {
@@ -81,6 +96,7 @@ function drawchart(chart, name, data, text) {
     };
 
     option && chart.setOption(option);
+    // 點擊圖示會啟動showText function
     chart.on('click', function (params) {
         for (i = 0; i < 6; i++) {
             if (params.name == data[i]['name']) {
@@ -92,6 +108,7 @@ function drawchart(chart, name, data, text) {
     })
 }
 
+// 顯示文字
 function showText(text, chart) {
     let option = {
         series: [
@@ -105,7 +122,7 @@ function showText(text, chart) {
                             distance: 5,
                             show: true,
                             formatter: text.join('\n'),
-                            backgroundColor: "#deb887",
+                            backgroundColor: "#FF8E8F",
                             borderColor: '#d2691e',
                             borderWidth: 2,
                             borderRadius: 5,
@@ -120,7 +137,7 @@ function showText(text, chart) {
                             rich: {
                                 fontSize: 16,
                                 textBorderColor: '#000',
-                                textBorderWidth: 3,
+                                textBorderWidth: 1,
                                 color: '#fff',
                             }
                         }
@@ -142,12 +159,13 @@ function showText(text, chart) {
     chart.setOption(option);
 }
 
+// 畫柱狀圖
 function drawchart_bar(chart, data, xName, yName) {
     let option = {
         dataset: {
             source: data
         },
-        grid: { containLabel: true },
+        grid: { containLabel: false },
         xAxis: { name: xName },
         yAxis: { type: 'category' },
         visualMap: {
@@ -159,7 +177,7 @@ function drawchart_bar(chart, data, xName, yName) {
             // Map the score column to color
             dimension: 2,
             inRange: {
-                color: ['#d8bfd8', '#ffc0cb', '#db7093']
+                color: ['#FFF455', '#FFC700', '#4CCD99']
             }
         },
         series: [
