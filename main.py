@@ -10,6 +10,8 @@ app = Flask(__name__)
 def health():
     bmi = None
     message = ""
+    height = None
+    weight = None
     if request.method == "POST":
         try:
             height = eval(request.form.get("height"))
@@ -33,7 +35,9 @@ def health():
         bmi = ""
         height = ""
         weight = ""
-    return render_template("health.html", bmi=bmi, message=message)
+    return render_template(
+        "health.html", bmi=bmi, message=message, height=height, weight=weight
+    )
 
 
 def get_bmi(height, weight):
