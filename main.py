@@ -33,9 +33,7 @@ def health():
         bmi = ""
         height = ""
         weight = ""
-    return render_template(
-        "health.html", bmi=bmi, message=message, height=height, weight=weight
-    )
+    return render_template("health.html", bmi=bmi, message=message)
 
 
 def get_bmi(height, weight):
